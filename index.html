@@ -1,15 +1,28 @@
 <!DOCTYPE html> 
 <html>
-<meta>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Iago Suárez">
+    <title>Video Zoom Example</title>
+    <link href="css/zoom-style.css" rel="stylesheet">
 </html>
 <body> 
 
-<h1>Esta es una página que muestra video</h1>
-<video width="400" controls>
-  <source src="video_prueba.mp4" type="video/mp4">
-  Your browser does not support HTML5 video.
-</video>
+	<h1>Esta es una página que muestra video ampliado</h1>
+	<div id="current-detected-objs">
+		<video  id="video-player" width="400" controls>
+			<source src="video_prueba.mp4" type="video/mp4">
+			Your browser does not support HTML5 video.
+		</video>
 
+		<div id="canvas-container">
+			<canvas id="suspicious-layer" class="drawing-layer"></canvas>
+			<div id="zoom-slider"></div>
+		</div>
+	</div>
+
+	<script src="js/jquery-1.12.3.js"></script>
+	<script src="js/zoom-controller.js"></script>
 </body> 
 </html>
