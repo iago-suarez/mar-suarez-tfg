@@ -2,8 +2,9 @@
  * Created by iago on 16/07/15.
  */
 
-var TOP_LEFT_POINT = {x: 20, y: 20}; //Pixels
-var VIDEO_WINDOW_SIZE = {w: 181, h: 100}; //Pixels (Note: You have to respect the aspect ratio)
+//This is the size of the first window, this was set manualliy
+var TOP_LEFT_POINT = {x: 663, y: 18}; //Pixels
+var VIDEO_WINDOW_SIZE = {w: 595, h: 335}; //Pixels (Note: You have to respect the aspect ratio)
 
 /********************************************************************************/
 var video;
