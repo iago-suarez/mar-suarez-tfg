@@ -1,28 +1,37 @@
 <!DOCTYPE html> 
 <html>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Iago Suárez">
     <title>Video Zoom Example</title>
     <link href="css/zoom-style.css" rel="stylesheet">
-</html>
-<body> 
 
-	<h1>Esta es una página que muestra video ampliado</h1>
-	<div id="current-detected-objs">
-		<video  id="video-player" width="400" controls>
-			<source src="media/comprimido2.webm" type="video/webm">
-			Your browser does not support HTML5 video.
-		</video>
+    <body> 
 
-		<div id="canvas-container">
-			<canvas id="zoom-layer" class="drawing-layer"></canvas>
-			<div id="zoom-slider"></div>
-		</div>
-	</div>
+        <h1>Video "multiple" ampliado</h1>
+        <div id="current-detected-objs">
+            <video  id="video-player" width="400" controls>
+                <source src="media/comprimido2.webm" type="video/webm">
+                Your browser does not support HTML5 video.
+            </video>
 
-	<script src="js/jquery-1.12.3.js"></script>
-	<script src="js/zoom-controller.js"></script>
-</body> 
+            <div id="canvas-container">
+                <canvas id="zoom-layer" class="drawing-layer"></canvas>
+                <div id="zoom-slider"></div>
+            </div>
+        </div>
+
+        <script src="js/jquery-1.12.3.js"></script>
+        <script src="js/zoom-controller.js"></script>        
+        <form name=fVideos> 
+            <input type="Radio" name="video" value="1" checked="checked"> Video 1
+            <br> 
+            <input type="Radio" name="video" value="2"> Video 2
+            <br> 
+            <input type="Radio" name="video" value="3"> Video 3             
+            <br> 
+            <!--<input type="Button" name="" value="Cambia Video" onclick="cambiarVideo()"> -->
+        </form> 
+    </body> 
 </html>
