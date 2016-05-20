@@ -102,9 +102,6 @@ function ZoomManager(videoElement, canvasElement) {
      * Updates the zoom state in function of the time and the detection position
      */
     this.updateState = function () {
-        //seleccionamos el video que toca ver segun el radiobutton
-        selectVideo();
-        console.log("selectVideo");
         var context = this.canvasElement.getContext('2d');
         context.fillStyle = 'black';
         //The image to draw will fill the full canvas size
@@ -157,12 +154,18 @@ function selectVideo() {
     }
 }
 
-$(document).ready(function () {  
+$(document).ready(function () {
     video = document.getElementById('video-player');
     $(video).ready(function () {
         if (systemStarted) {
             adjustCanvas(video);
         }
+    });
+    //escuchamos los radio button para cambiar el video.
+    $('input:radio').on('click', function (e) {
+        selectVideo();
+        //console.log(e.currentTarget.name); //e.currenTarget.name points to the property name of the 'clicked' target.
+        //console.log(e.currentTarget.value); //e.currenTarget.value points to the property value of the 'clicked' target.
     });
 
     $(video).resize(function () {
