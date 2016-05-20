@@ -4,8 +4,6 @@
 
 //This is the size of the first window, this was set manualliy
 var TOP_LEFT_POINT = {x: 663, y: 18}; //Pixels video 1
-//var TOP_LEFT_POINT = {x: 663, y: 370}; //Pixels video 2
-//var TOP_LEFT_POINT = {x: 663, y: 718}; //Pixels video 3
 var VIDEO_WINDOW_SIZE = {w: 595, h: 335}; //Pixels (Note: You have to respect the aspect ratio)
 
 /********************************************************************************/
@@ -35,14 +33,11 @@ function arrayMean(arr) {
  * Here we should control if fullsize or not
  */
 function updateStatus() {
-    //TODO fix fullsize
     if (!video.paused) {
+        //TODO: PA QUE EL LOOP?
         loop_running = true;
         var time = Date.now();
         my_manager.updateState();
-        //NO deberiamos ajustar aqui el canvas por que lo hace
-        //ochenta veces por segundo, arreglarlo en resize
-        adaptCanvas();
         updateIndex = (updateIndex + 1) % lastUpdateTimes.length;
         lastUpdateTimes[updateIndex] = Date.now() - time;
         //Waits the fps time least data processing time
@@ -109,6 +104,7 @@ function ZoomManager(videoElement, canvasElement) {
     this.updateState = function () {
         //seleccionamos el video que toca ver segun el radiobutton
         selectVideo();
+        console.log("selectVideo");
         var context = this.canvasElement.getContext('2d');
         context.fillStyle = 'black';
         //The image to draw will fill the full canvas size
@@ -161,11 +157,8 @@ function selectVideo() {
     }
 }
 
-$(document).ready(function () {
-    //seleccionamos el video segun lo que trae del html    
-    //selectVideo();  
+$(document).ready(function () {  
     video = document.getElementById('video-player');
-
     $(video).ready(function () {
         if (systemStarted) {
             adjustCanvas(video);
@@ -173,9 +166,6 @@ $(document).ready(function () {
     });
 
     $(video).resize(function () {
-        //TODO al hacer resize deberiamos ajustar canvas, pero no rula, FIX
-//        console.log("Entramos en resize");
-        // adaptCanvas();       
         if (!systemStarted) {
             //Create the videoDetections object from the xml result and add its observers
             my_manager = new ZoomManager(video, document.getElementById("zoom-layer"));
@@ -186,12 +176,13 @@ $(document).ready(function () {
             //Here we have the necessary data of the video
             adjustCanvas(video);
         }
-
-
     });
 
     $(window).resize(function () {
+        //console.log("Entramos en window resize");
         if (systemStarted) {
+            //adaptamos el canvas a fullscreem o pantalla normal
+            adaptCanvas();
             adjustCanvas(video);
         }
     });
