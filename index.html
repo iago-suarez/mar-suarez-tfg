@@ -4,16 +4,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Iago Suárez">
+
     <title>Video Zoom Example</title>
+
+    <link rel="stylesheet" href="css/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/ekko-lightbox/ekko-lightbox.min.css">
+    <link rel="stylesheet" href="css/kurento.css">
+
     <link href="css/zoom-style.css" rel="stylesheet">
 
-    <body> 
+    <body class="container"> 
 
         <h1>Video "multiple" ampliado</h1>
         <div id="current-detected-objs">
-            <video  id="video-player" width="400" controls>
-                <source src="media/comprimido2.webm" type="video/webm">
-                Your browser does not support HTML5 video.
+            <video  id="video-player" autoplay width="400" controls poster="img/webrtc.png">
             </video>
 
             <div id="canvas-container">
@@ -22,8 +26,6 @@
             </div>
         </div>
 
-        <script src="js/jquery-1.12.3.js"></script>
-        <script src="js/zoom-controller.js"></script>        
         <form name=fVideos> 
             <input type="Radio" name="video" value="1" checked="checked"> Video 1
             <br> 
@@ -32,6 +34,42 @@
             <input type="Radio" name="video" value="3"> Video 3             
             <br> 
             <!--<input type="Button" name="" value="Cambia Video" onclick="cambiarVideo()"> -->
-        </form> 
+        </form>
+
+        <div>
+            <a id="start" href="#" class="btn btn-success"><span
+                    class="glyphicon glyphicon-play"></span> Start</a><br /> <br /> <a
+                id="stop" href="#" class="btn btn-danger"><span
+                    class="glyphicon glyphicon-stop"></span> Stop</a>
+        </div>
+
+        <div>
+            </br>
+            Set source URL: <input style="width:350px;" id="address" type="text">
+            </br></br>
+
+            </br>
+            Set Kurento URL: <input style="width:350px;" id="kurento-server" type="text">
+            </br></br>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <label class="control-label" for="console">Console</label>
+                <div id="console"></div>
+            </div>
+        </div>
+
+        <script src="js/jquery/jquery.min.js"></script>
+        <script src="js/bootstrap/bootstrap.min.js"></script>
+        <script src="js/ekko-lightbox/ekko-lightbox.min.js"></script>
+        <script	src="js/webrtc-adapter/adapter.js"></script>
+
+        <script src="js/kurento-client/kurento-client.js"></script>
+        <script src="js/kurento-utils/kurento-utils.js"></script>
+
+        <script src="js/console.js"></script>
+        <script src="js/index.js"></script>
+        <script src="js/zoom-controller.js"></script>        
     </body> 
 </html>
